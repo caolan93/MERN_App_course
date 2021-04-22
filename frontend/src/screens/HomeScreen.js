@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Product from '../components/Product'
 import { Row, Col } from 'react-bootstrap'
 
 const HomeScreen = () => {
+
+    const [products, setProduct] = useState([])
     return (
         <>
             <h1>Latest Products</h1>
