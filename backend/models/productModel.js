@@ -1,67 +1,70 @@
 import mongoose from 'mongoose'
 
-const reviewSchema = mongoose.Schema({
-    name: { type: String, required: true },
-    rating: { type: Number, required: true },
-    comment: { type: String, required: true }
-}, { timestamps: true })
+const reviewSchema = mongoose.Schema(
+    {
+        name: { type: String, required: true },
+        rating: { type: Number, required: true },
+        comment: { type: String, required: true },
+    },
+    {
+        timestamps: true,
+    }
+)
 
-const productModel = mongoose.Schema(
+const productSchema = mongoose.Schema(
     {
         user: {
             type: mongoose.Schema.Types.ObjectId,
             required: true,
-            ref: 'User'
+            ref: 'User',
         },
         name: {
             type: String,
-            required: true
+            required: true,
         },
         image: {
             type: String,
-            required: true
+            required: true,
         },
         brand: {
             type: String,
-            required: true
+            required: true,
         },
         category: {
             type: String,
-            required: true
+            required: true,
         },
         description: {
             type: String,
-            required: true
+            required: true,
         },
-        reviews: [
-        ],
+        reviews: [reviewSchema],
         rating: {
             type: Number,
             required: true,
-            default: 0
+            default: 0,
         },
         numReviews: {
             type: Number,
             required: true,
-            default: 0
+            default: 0,
         },
         price: {
             type: Number,
             required: true,
-            default: 0
+            default: 0,
         },
         countInStock: {
             type: Number,
             required: true,
-            default: 0
+            default: 0,
         },
-        id: {
-            type: Number,
-            required: true,
-            unique: true
-        }
-    }, { timestamps: true })
+    },
+    {
+        timestamps: true,
+    }
+)
 
-const Product = mongoose.model('Product', productModel)
+const Product = mongoose.model('Product', productSchema)
 
 export default Product
