@@ -21,7 +21,7 @@ const PlaceOrderScreen = ({ history }) => {
 
     cart.itemsPrice = addDecimal(cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0))
     cart.shippingPrice = addDecimal(cart.itemsPrice > 100 ? 0 : 10)
-    cart.taxPrice = addDecimal(Number((cart.itemsPrice * .15).toFixed(2)))
+    cart.taxPrice = addDecimal((cart.itemsPrice * .15).toFixed(2))
 
     cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.shippingPrice) + Number(cart.taxPrice)).toFixed(2)
 
@@ -30,7 +30,7 @@ const PlaceOrderScreen = ({ history }) => {
 
     useEffect(() => {
         if (success) {
-            history.pushState(`/order/${order._id}`)
+            history.push(`/order/${order._id}`)
         }
         // eslint-disable-next-line
     }, [history, success])
