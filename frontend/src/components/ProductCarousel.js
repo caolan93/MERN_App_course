@@ -1,9 +1,9 @@
-import React from 'react'
-import { userSelector, useEffect } from 'react-redux'
+import React, { useEffect } from 'react'
 import { Carousel, Image } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import Loader from './Loader'
 import Message from './Message'
+import { useDispatch, useSelector } from 'react-redux'
 import { listTopProducts } from '../actions/productActions'
 
 const ProductCarousel = () => {
